@@ -9,43 +9,45 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#FAF8F2;
-    --ink:#1B211C;
-    --ink-soft:#5B6459;
-    --line:#E1DCCD;
-    --card:#FFFFFE;
-    --clover:#1F6E42;
-    --clover-soft:#E4EEE4;
+    --paper:#F5F7FB;
+    --ink:#141A2A;
+    --ink-soft:#5B637A;
+    --line:#DEE3EF;
+    --card:#FFFFFF;
+    --clover:#2E6FB0;
+    --clover-soft:#E4ECF7;
     --amber:#B06A2A;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --paper:#14180F;
-      --ink:#E9E5D8;
-      --ink-soft:#A3AA9C;
-      --line:#2C3326;
-      --card:#1A2018;
-      --clover:#5FAE84;
-      --clover-soft:#1E2E22;
-      --amber:#D99B58;
+      --paper:#080B16;
+      --ink:#E8ECF7;
+      --ink-soft:#8B93AC;
+      --line:#1D2438;
+      --card:#0F1526;
+      --clover:#7FB2FF;
+      --clover-soft:#182643;
+      --amber:#E8B25C;
     }
   }
   :root[data-theme="dark"]{
-    --paper:#14180F;
-    --ink:#E9E5D8;
-    --ink-soft:#A3AA9C;
-    --line:#2C3326;
-    --card:#1A2018;
-    --clover:#5FAE84;
-    --clover-soft:#1E2E22;
-    --amber:#D99B58;
+    --paper:#080B16;
+    --ink:#E8ECF7;
+    --ink-soft:#8B93AC;
+    --line:#1D2438;
+    --card:#0F1526;
+    --clover:#7FB2FF;
+    --clover-soft:#182643;
+    --amber:#E8B25C;
   }
   *{ box-sizing:border-box; }
   body{
     margin:0;
     background:
-      radial-gradient(680px 420px at 88% -8%, color-mix(in srgb, var(--clover) 7%, transparent), transparent 70%),
+      radial-gradient(700px 420px at 15% -8%, color-mix(in srgb, var(--clover) 16%, transparent), transparent 70%),
+      radial-gradient(600px 380px at 92% 85%, color-mix(in srgb, var(--amber) 10%, transparent), transparent 70%),
       var(--paper);
+    background-attachment:fixed;
     color:var(--ink);
     font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
     line-height:1.6;
@@ -56,6 +58,25 @@
     *, *::before, *::after{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
     section{ opacity:1; transform:none; }
     .radar-sweep{ display:none; }
+    .star{ animation:none; }
+  }
+
+  .stars{ position:fixed; inset:0; pointer-events:none; z-index:-1; display:none; }
+  :root[data-theme="dark"] .stars{ display:block; }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .stars{ display:block; }
+  }
+  .star{
+    position:absolute;
+    width:calc(var(--s, 1.2) * 1px); height:calc(var(--s, 1.2) * 1px);
+    border-radius:50%; background:#fff;
+    opacity:var(--o, .7);
+    animation:twinkle var(--d, 3.2s) ease-in-out infinite;
+    animation-delay:var(--dl, 0s);
+  }
+  @keyframes twinkle{
+    0%, 100%{ opacity:var(--o, .7); }
+    50%{ opacity:.12; }
   }
   .wrap{ max-width:640px; margin:0 auto; padding:76px 24px 90px; }
   .mono{ font-family:"IBM Plex Mono", ui-monospace, monospace; }
@@ -136,7 +157,7 @@
   section.in-view{ opacity:1; transform:none; }
   h2{
     font-family:"IBM Plex Mono", monospace;
-    font-size:12px; text-transform:uppercase; letter-spacing:.1em;
+    font-size:14px; text-transform:uppercase; letter-spacing:.09em;
     color:var(--ink-soft); font-weight:500; margin:0 0 18px;
   }
 
@@ -189,6 +210,27 @@
 </style>
 </head>
 <body>
+
+<div class="stars" aria-hidden="true">
+  <span class="star" style="left:8%; top:12%; --s:1.2; --o:.9; --d:3.4s; --dl:.2s;"></span>
+  <span class="star" style="left:22%; top:6%; --s:.9; --o:.7; --d:2.8s; --dl:1.1s;"></span>
+  <span class="star" style="left:35%; top:18%; --s:1.6; --o:.8; --d:3.9s; --dl:.6s;"></span>
+  <span class="star" style="left:48%; top:4%; --s:1; --o:.65; --d:3.1s; --dl:1.8s;"></span>
+  <span class="star" style="left:61%; top:14%; --s:1.3; --o:.85; --d:2.6s; --dl:.4s;"></span>
+  <span class="star" style="left:74%; top:8%; --s:.8; --o:.6; --d:3.6s; --dl:1.4s;"></span>
+  <span class="star" style="left:88%; top:20%; --s:1.5; --o:.8; --d:3s; --dl:.9s;"></span>
+  <span class="star" style="left:15%; top:32%; --s:1; --o:.7; --d:3.3s; --dl:2.1s;"></span>
+  <span class="star" style="left:40%; top:28%; --s:1.2; --o:.75; --d:2.9s; --dl:.3s;"></span>
+  <span class="star" style="left:55%; top:34%; --s:.9; --o:.6; --d:3.7s; --dl:1.6s;"></span>
+  <span class="star" style="left:70%; top:30%; --s:1.4; --o:.85; --d:2.5s; --dl:.7s;"></span>
+  <span class="star" style="left:92%; top:38%; --s:1; --o:.65; --d:3.5s; --dl:1.2s;"></span>
+  <span class="star" style="left:10%; top:55%; --s:1.1; --o:.7; --d:3.2s; --dl:.5s;"></span>
+  <span class="star" style="left:30%; top:62%; --s:.8; --o:.6; --d:2.7s; --dl:1.9s;"></span>
+  <span class="star" style="left:50%; top:58%; --s:1.3; --o:.8; --d:3.8s; --dl:.8s;"></span>
+  <span class="star" style="left:66%; top:66%; --s:1; --o:.65; --d:3s; --dl:1.5s;"></span>
+  <span class="star" style="left:82%; top:60%; --s:1.5; --o:.85; --d:2.6s; --dl:1s;"></span>
+  <span class="star" style="left:95%; top:70%; --s:.9; --o:.6; --d:3.4s; --dl:.1s;"></span>
+</div>
 
 <div class="progress-bar" id="progress-bar"></div>
 
@@ -248,8 +290,45 @@
         <div class="entry-sub">Thales · Delft, Netherlands</div>
         <div class="entry-desc">Radar micro-Doppler signal analysis for airborne targets using machine learning.</div>
       </div>
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-role">Student Mentor &amp; Ambassador</span>
+          <span class="entry-date">2018–2019</span>
+        </div>
+        <div class="entry-sub">TU Delft AE Mentor Alumni Programme · Delft, Netherlands</div>
+      </div>
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-role">Software Engineer — Compulsory Army Service</span>
+          <span class="entry-date">2016–2017</span>
+        </div>
+        <div class="entry-sub">Hellenic Army, Cyber Defence Centre · Athens, Greece</div>
+        <div class="entry-desc">Java application development.</div>
+      </div>
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-role">Junior Engineer</span>
+          <span class="entry-date">2015–2016</span>
+        </div>
+        <div class="entry-sub">Yodiwo · Patras, Greece</div>
+        <div class="entry-desc">Maintenance and testing of an IoT platform, backend and frontend.</div>
+      </div>
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-role">Engineering Intern</span>
+          <span class="entry-date">2015</span>
+        </div>
+        <div class="entry-sub">Yodiwo · Patras, Greece</div>
+        <div class="entry-desc">Research and implementation of a panorama-stitching algorithm using MATLAB and OpenCV.</div>
+      </div>
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-role">Teaching Assistant, Assembly Lab</span>
+          <span class="entry-date">2013</span>
+        </div>
+        <div class="entry-sub">University of Patras</div>
+      </div>
     </div>
-    <p class="entry-note">Earlier: Java development at the Greek Army's Cyber Defence Centre, IoT platform work and panorama-stitching research at Yodiwo, and teaching assistant work at the University of Patras.</p>
   </section>
 
   <section>
