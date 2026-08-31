@@ -1,69 +1,250 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vasileios Papanastasiou - Personal Page</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to an external CSS file -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vassilis — Software Test Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF8F2;
+    --ink:#1B211C;
+    --ink-soft:#5B6459;
+    --line:#E1DCCD;
+    --card:#FFFFFE;
+    --clover:#1F6E42;
+    --clover-soft:#E4EEE4;
+    --amber:#B06A2A;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#14180F;
+      --ink:#E9E5D8;
+      --ink-soft:#A3AA9C;
+      --line:#2C3326;
+      --card:#1A2018;
+      --clover:#5FAE84;
+      --clover-soft:#1E2E22;
+      --amber:#D99B58;
+    }
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{ max-width:640px; margin:0 auto; padding:76px 24px 90px; }
+  .mono{ font-family:"IBM Plex Mono", ui-monospace, monospace; }
+
+  .eyebrow{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:12.5px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--clover);
+    display:flex; align-items:center; gap:9px; margin-bottom:16px;
+  }
+  .eyebrow::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--clover); }
+
+  h1{
+    font-family:"Fraunces", Georgia, serif;
+    font-weight:600;
+    font-size:clamp(38px,7vw,54px);
+    letter-spacing:-.01em;
+    margin:0 0 6px;
+    text-wrap:balance;
+  }
+  .handle{ color:var(--ink-soft); font-size:14.5px; margin:0 0 24px; }
+  .handle a{ color:var(--ink-soft); }
+
+  .lede{ font-size:17.5px; max-width:54ch; color:var(--ink); margin:0 0 26px; }
+  .lede b{ font-weight:600; }
+
+  .tags{ display:flex; flex-wrap:wrap; gap:8px; }
+  .tag{
+    font-family:"IBM Plex Mono", monospace; font-size:11.5px; letter-spacing:.03em;
+    background:var(--clover-soft); color:var(--clover);
+    padding:5px 11px; border-radius:20px;
+  }
+  .tag.warm{ background:color-mix(in srgb, var(--amber) 15%, transparent); color:var(--amber); }
+
+  section{ margin-top:56px; }
+  h2{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:12px; text-transform:uppercase; letter-spacing:.1em;
+    color:var(--ink-soft); font-weight:500; margin:0 0 18px;
+  }
+
+  /* Projects: the showcase, gets card treatment */
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:20px 22px;
+  }
+  .card + .card{ margin-top:12px; }
+  .card p{ margin:0; color:var(--ink-soft); font-size:14.5px; }
+  .card p a{ color:var(--clover); text-decoration:none; border-bottom:1px solid currentColor; padding-bottom:1px; }
+  .card p a:hover{ opacity:.8; }
+  .card p + p{ margin-top:8px; }
+  .card h3{ font-family:"IBM Plex Sans",sans-serif; font-size:16.5px; font-weight:600; margin:0 0 7px; }
+
+  /* Experience / Education: quiet typographic list, no boxes */
+  .entries{ display:flex; flex-direction:column; }
+  .entry{ padding:16px 0; border-top:1px solid var(--line); }
+  .entry:first-child{ border-top:none; padding-top:0; }
+  .entry-head{ display:flex; justify-content:space-between; align-items:baseline; gap:14px; flex-wrap:wrap; }
+  .entry-role{ font-weight:600; font-size:15px; color:var(--ink); }
+  .entry-date{ font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--ink-soft); white-space:nowrap; }
+  .entry-sub{ font-size:13px; color:var(--ink-soft); margin-top:2px; }
+  .entry-desc{ font-size:13.5px; color:var(--ink-soft); margin-top:7px; max-width:58ch; }
+  .entry-note{ font-size:13.5px; color:var(--ink-soft); margin-top:16px; padding-top:16px; border-top:1px solid var(--line); }
+
+  .links{ display:flex; flex-wrap:wrap; gap:16px 20px; }
+  .links a{
+    color:var(--ink); text-decoration:none; font-weight:500; font-size:14.5px;
+    border-bottom:1px solid var(--line); padding-bottom:2px;
+  }
+  .links a:hover{ border-bottom-color:var(--clover); color:var(--clover); }
+
+  footer{ margin-top:64px; padding-top:22px; border-top:1px solid var(--line); color:var(--ink-soft); font-size:12.5px; }
+
+  a:focus-visible{ outline:2px solid var(--clover); outline-offset:2px; }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Vasileios Papanastasiou</h1>
-        <nav>
-            <ul>
-                <li><a href="#summary">Summary</a></li>
-                <li><a href="#interests">Interests</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<div class="wrap">
 
-    <main>
-        <section id="summary">
-            <h2>Summary</h2>
-            <p><!-- Summary content goes here --></p>
-        </section>
+  <div class="eyebrow">Software Test Engineer</div>
+  <h1>Vassilis</h1>
+  <p class="handle"><a href="https://github.com/vpapanasta" target="_blank" rel="noopener">@vpapanasta</a> on GitHub</p>
 
-        <section id="interests">
-            <h2>Interests</h2>
-            <ul>
-                <li><!-- Interest 1 --></li>
-                <li><!-- Interest 2 --></li>
-                <li><!-- Interest 3 --></li>
-                <!-- Add more interests as needed -->
-            </ul>
-        </section>
+  <p class="lede">Senior Software Test Engineer at MathWorks, testing deep learning and GenAI systems. Currently expanding into modern test automation — <b>Playwright, contract testing, CI/CD, and agent evaluation.</b></p>
 
-        <section id="education">
-            <h2>Education</h2>
-            <ul>
-                <li><!-- Education 1 --></li>
-                <li><!-- Education 2 --></li>
-                <!-- Add more education entries as needed -->
-            </ul>
-        </section>
+  <div class="tags">
+    <span class="tag">GenAI &amp; Agent Testing</span>
+    <span class="tag">Test Automation</span>
+    <span class="tag">Quality Engineering</span>
+  </div>
 
-        <section id="experience">
-            <h2>Working Experience</h2>
-            <ul>
-                <li><!-- Experience 1 --></li>
-                <li><!-- Experience 2 --></li>
-                <!-- Add more experience entries as needed -->
-            </ul>
-        </section>
+  <section>
+    <h2>Experience</h2>
+    <div class="entries">
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-role">Senior Software Test Engineer — Deep Learning &amp; GenAI</span>
+          <span class="entry-date">2022–Present</span>
+        </div>
+        <div class="entry-sub">MathWorks · Cambridge, UK</div>
+      </div>
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-role">Software Test Engineer — Deep Learning</span>
+          <span class="entry-date">2020–2022</span>
+        </div>
+        <div class="entry-sub">MathWorks · Cambridge, UK</div>
+      </div>
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-role">Deep Learning Research Intern</span>
+          <span class="entry-date">2018–2019</span>
+        </div>
+        <div class="entry-sub">Thales · Delft, Netherlands</div>
+        <div class="entry-desc">Radar micro-Doppler signal analysis for airborne targets using machine learning.</div>
+      </div>
+    </div>
+    <p class="entry-note">Earlier: Java development at the Greek Army's Cyber Defence Centre, IoT platform work and panorama-stitching research at Yodiwo, and teaching assistant work at the University of Patras.</p>
+  </section>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <address>
-                <!-- Contact information goes here -->
-            </address>
-        </section>
-    </main>
+  <section>
+    <h2>Education</h2>
+    <div class="entries">
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-role">MSc, Electrical &amp; Electronics Engineering</span>
+          <span class="entry-date">2017–2019</span>
+        </div>
+        <div class="entry-sub">Delft University of Technology</div>
+        <div class="entry-desc">Specialized in Signal Processing &amp; Artificial Intelligence.</div>
+      </div>
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-role">Engineer's Degree (MEng), Computer Engineering &amp; Informatics</span>
+          <span class="entry-date">2010–2016</span>
+        </div>
+        <div class="entry-sub">University of Patras · Valedictorian, 8.26/10</div>
+        <div class="entry-desc">Thesis: evaluating laminar flame speed of lean premixed methane/air and propane/air flames using image processing and the Bunsen flame method.</div>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p>&copy; 2023 Vasileios Papanastasiou</p>
-    </footer>
+  <section>
+    <h2>Publications</h2>
+    <div class="entries">
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-role"><a href="https://ieeexplore.ieee.org/document/9337435/" target="_blank" rel="noopener" style="color:inherit; text-decoration:none; border-bottom:1px solid var(--line);">Deep Learning-Based Identification of Human Gait by Radar Micro-Doppler Measurements</a></span>
+          <span class="entry-date">2021</span>
+        </div>
+        <div class="entry-sub">V.S. Papanastasiou, R.P. Trommel, R.I.A. Harmanny, A. Yarovoy · European Radar Conference (EuRAD)</div>
+      </div>
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-role"><a href="https://www.cambridge.org/core/journals/international-journal-of-microwave-and-wireless-technologies/article/attentionbased-deep-learning-networks-for-identification-of-human-gait-using-radar-microdoppler-spectrograms/8AC4571E9EC58DF7F5A94B3FCE4748C2" target="_blank" rel="noopener" style="color:inherit; text-decoration:none; border-bottom:1px solid var(--line);">Attention-Based Deep Learning Networks for Identification of Human Gait Using Radar Micro-Doppler Spectrograms</a></span>
+          <span class="entry-date">2021</span>
+        </div>
+        <div class="entry-sub">H.G. Doherty, R. Arnaiz Burgueño, R.P. Trommel, V. Papanastasiou, R.I.A. Harmanny · International Journal of Microwave and Wireless Technologies</div>
+      </div>
+    </div>
+    <p style="color:var(--ink-soft); font-size:13px; margin-top:14px;"><a href="https://scholar.google.com/citations?user=vvc6lecAAAAJ&amp;hl=el" target="_blank" rel="noopener" style="color:var(--clover); border-bottom:1px solid currentColor; text-decoration:none; padding-bottom:1px;">Full list on Google Scholar →</a></p>
+  </section>
+
+  <section>
+    <h2>Academic &amp; Misc Projects</h2>
+    <div class="card">
+      <h3>Asea Observatory, Greece</h3>
+      <p>A cool non-software project: helped build an astronomical observatory in Arcadia, Greece, 2016–17 — a project a fair distance from a keyboard. Now operational: <a href="https://www.astroasea.gr/" target="_blank" rel="noopener">astroasea.gr</a></p>
+    </div>
+    <div class="card">
+      <h3>Radar Micro-Doppler Analysis, Thales</h3>
+      <p>Sep 2018 – Nov 2018 · Analysis and visualization of radar micro-Doppler signals from airborne targets using machine learning.</p>
+    </div>
+    <div class="card">
+      <h3>Gait Identification via Radar, Thales</h3>
+      <p>Jan 2019 – Aug 2019 · Deep learning-based identification of a person's gait from radar micro-Doppler measurements — my MSc thesis. <a href="https://repository.tudelft.nl/islandora/object/uuid%3A4a1ea237-2857-4c26-aad5-1f523fdde58a?collection=education" target="_blank" rel="noopener">TU Delft repository</a></p>
+    </div>
+    <p style="color:var(--ink-soft); font-size:13px; margin-top:14px;">A separate Software Projects section is coming once there's real work to show there.</p>
+  </section>
+
+  <section>
+    <h2>Outside work</h2>
+    <div class="tags">
+      <span class="tag warm">Travel &amp; road trips</span>
+      <span class="tag warm">Cooking</span>
+      <span class="tag warm">Running</span>
+      <span class="tag warm">Football</span>
+      <span class="tag warm">European Basketball</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Elsewhere</h2>
+    <div class="links">
+      <a href="https://github.com/vpapanasta" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/vassilis-papanastasiou/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.mathworks.com/company/jobs/resources/staff-voices/exploring-the-world-of-ai-and-software-quality.html" target="_blank" rel="noopener">MathWorks feature</a>
+      <!-- Add an email link here when you want it public, e.g.:
+      <a href="mailto:you@example.com">Email</a>
+      -->
+    </div>
+  </section>
+
+  <footer>
+    Built while learning test automation and agent quality engineering.
+  </footer>
+
+</div>
 </body>
 </html>
